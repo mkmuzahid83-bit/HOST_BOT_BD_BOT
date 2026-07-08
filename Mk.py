@@ -535,20 +535,32 @@ def is_banned(uid):
 def is_maint(): return gs("maintenance_mode")=="1"
 def is_prem(uid):
     r=get_user(uid); return bool(r and r["is_premium"])
-
-# ════════════════════════════════════════════════════════════
-# KEYBOARDS — USER (Reply only, no inline)
-# ════════════════════════════════════════════════════════════
 def main_kb(lang="bn"):
-    kb=types.ReplyKeyboardMarkup(resize_keyboard=True)
-    if lang=="en":
-        kb.row("🤖 Bot Services","💰 Payments")
-        kb.row("👥 Referral & Earn","💬 Support")
-        kb.row("VPN🛡️ Shops 🛍️")
+    kb = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    if lang == "en":
+        kb.row(
+            types.KeyboardButton("🤖 Bot Services", style="primary"),
+            types.KeyboardButton("💰 Payments", style="success"),
+        )
+        kb.row(
+            types.KeyboardButton("👥 Referral & Earn", style="primary"),
+            types.KeyboardButton("💬 Support", style="success"),
+        )
+        kb.row(
+            types.KeyboardButton("VPN🛡️ Shops 🛍️", style="danger"),
+        )
     else:
-        kb.row("🤖 বট সেবা","💰 পেমেন্ট")
-        kb.row("👥 রেফারেল ও আয়","💬 সাপোর্ট")
-        kb.row("VPN🛡️ Shops 🛍️")
+        kb.row(
+            types.KeyboardButton("🤖 বট সেবা", style="primary"),
+            types.KeyboardButton("💰 পেমেন্ট", style="success"),
+        )
+        kb.row(
+            types.KeyboardButton("👥 রেফারেল ও আয়", style="primary"),
+            types.KeyboardButton("💬 সাপোর্ট", style="success"),
+        )
+        kb.row(
+            types.KeyboardButton("VPN🛡️ Shops 🛍️", style="danger"),
+        )
     return kb
 
 def back_cancel_kb(lang="bn", back_label=None):
